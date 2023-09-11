@@ -49,6 +49,22 @@ class ProductManager{
             console.log(error)
         }
     }
+
+    getProductById = async (idProduct) => {
+
+        const products = await this.getProducts();
+
+        const indexProduct = products.findIndex(product => product.id === idProduct);
+
+        if(indexProduct === -1) {
+            return console.log('Producto no encontrado');
+           
+        }else{
+           return products[indexProduct]
+        }
+
+        
+    }
 }
 
 module.exports = {

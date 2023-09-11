@@ -4,7 +4,6 @@ const manager = new ProductManager('./files/productos.json');
 
 const enviar = async() =>   {
     const productos =  await manager.getProducts();
-    console.log(productos);
 
     const product = {
         titulo : 'Escoba',
@@ -18,7 +17,13 @@ const enviar = async() =>   {
     await manager.addProducts(product);
 
     const productosResultadoFinal = await manager.getProducts();
+    const obtenerID = await manager.getProductById(4);
+   
+    // muestra productos
     console.log(productosResultadoFinal);
+
+   // busca por id segun lo indicado en obtener id
+    console.log(obtenerID);
 }
 
 enviar();
