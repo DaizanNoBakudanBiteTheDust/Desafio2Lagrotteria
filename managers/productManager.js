@@ -1,7 +1,7 @@
 // dependencia de los NPM
 const fs = require('fs');
 
-export default class ProductManager{
+class ProductManager{
     constructor(path) {
         this.path = path;
     }
@@ -25,4 +25,8 @@ export default class ProductManager{
             console.log(error);
         }
     }
+}
+
+module.exports = {
+    ProductManager
 }
