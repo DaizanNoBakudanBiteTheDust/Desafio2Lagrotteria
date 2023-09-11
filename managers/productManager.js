@@ -6,7 +6,7 @@ class ProductManager{
         this.path = path;
     }
 
-// obtencion productos
+// obtencion productos devuelve arreglo vacio si no hay 
 
     getProducts = async () => {
         try{
@@ -23,6 +23,30 @@ class ProductManager{
         }
         catch(error){
             console.log(error);
+        }
+    }
+
+    //Creo productos
+
+    createProducts = async (producto) =>{
+        // Obtiene productos
+        try {
+            const products = await this.getProducts();
+
+            if(products.lenght === 0){
+                producto.id = 1;
+            }else{
+                producto.id = products[products.lenght -1].id + 1;
+            }
+            // se agrega el producto
+            products.push(producto);
+
+            await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\ts'));
+
+            return producto;
+            
+        } catch (error) {
+            console.log(error)
         }
     }
 }
