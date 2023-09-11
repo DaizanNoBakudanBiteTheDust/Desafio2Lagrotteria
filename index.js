@@ -6,8 +6,8 @@ const enviar = async() =>   {
     const productos =  await manager.getProducts();
 
     const product = {
-        titulo : 'Escoba',
-        descripcion: 'barre piso',
+        titulo : 'marco',
+        descripcion: 'para cuadros',
         precio: '30$',
         thumbnail: 'https://www.avalco.cl/3650-thickbox_default/escoba5costuras.jpg',
         code: '121123',
@@ -16,14 +16,24 @@ const enviar = async() =>   {
 
     await manager.addProducts(product);
 
+       // muestra productos
     const productosResultadoFinal = await manager.getProducts();
-    const obtenerID = await manager.getProductById(4);
-   
-    // muestra productos
-    console.log(productosResultadoFinal);
 
-   // busca por id segun lo indicado en obtener id
-    console.log(obtenerID);
+     console.log(productosResultadoFinal);
+
+      // busca por id segun lo indicado en obtener id
+
+    const obtenerID = await manager.getProductById(4);
+
+     console.log(obtenerID);
+
+   // elimina producto con id 4 como menciona arriba
+
+    const eliminarProducto = await manager.deleteProductById(4);
+
+    console.log(eliminarProducto)
+
+
 }
 
 enviar();
