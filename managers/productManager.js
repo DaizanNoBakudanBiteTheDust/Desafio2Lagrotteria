@@ -28,20 +28,20 @@ class ProductManager{
 
     //Creo productos
 
-    createProducts = async (producto) =>{
+    addProducts = async (producto) =>{
         // Obtiene productos
         try {
             const products = await this.getProducts();
 
-            if(products.lenght === 0){
+            if(products.length === 0){
                 producto.id = 1;
             }else{
-                producto.id = products[products.lenght -1].id + 1;
+                producto.id = products[products.length -1].id + 1;
             }
             // se agrega el producto
             products.push(producto);
 
-            await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\ts'));
+            await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
 
             return producto;
             
