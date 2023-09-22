@@ -33,6 +33,13 @@ class ProductManager{
         try {
             const products = await this.getProducts();
 
+            const existingProduct = products.find((p) => p.code === producto.code);
+            // verifica si existe
+            if (existingProduct){
+                console.log ("El producto existe");
+                return null;
+            }
+
             if(products.length === 0){
                 producto.id = 1;
             }else{
