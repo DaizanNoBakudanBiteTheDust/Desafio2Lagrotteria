@@ -87,6 +87,26 @@ class ProductManager{
 
         
     }
+
+    updateProduct = async (idProduct, updatedProduct) => {
+        const products = await this.getProducts();
+
+        const indexProduct = products.findIndex(product => product.id === idProduct);
+
+        if (indexProduct === -1){
+            console.log("No existe el producto")
+        } else{
+            const updatedProducts = [...products];
+            updatedProducts[indexProduct] = {
+                ...products[indexProduct],
+                ...updatedProduct
+            };
+
+            await fs.promises.writeFile(this.path, JSON.stringify(updatedProducts, null, 4));
+
+        }
+        
+    }
 }
 
 module.exports = {

@@ -34,6 +34,17 @@ const enviar = async() =>   {
     console.log(eliminarProducto)
 
 
+      // actualiza producto seleccionando el ID
+      const actualizadoExitosamente = await manager.updateProduct(15, {
+        titulo: 'Nueva Escoba updateada 10000',
+        descripcion: 'Nueva descripción',
+        precio: '40$',
+        thumbnail: 'https://www.example.com/nueva-imagen.jpg',
+        stock: '15'
+    });
+    
+    console.log(actualizadoExitosamente) 
+
 }
 
 enviar();
